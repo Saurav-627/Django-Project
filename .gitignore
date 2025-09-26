@@ -1,0 +1,44 @@
+# Python compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Environment variables / virtual environment
+env/
+venv/
+ENV/
+*.env
+
+# Django migrations (optional, sometimes you include them)
+*/migrations/*.pyc
+*/migrations/*.py
+*/migrations/__pycache__/
+
+# Database files
+*.sqlite3
+
+# Static files / media
+staticfiles/
+media/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# MacOS files
+.DS_Store
+
+# Node / front-end dependencies (if using)
+node_modules/
+
+# Coverage reports
+.coverage
+htmlcov/
