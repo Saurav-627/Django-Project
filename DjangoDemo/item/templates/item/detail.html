@@ -45,4 +45,46 @@
     </div>
   </div>
 </div>
+
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+
+  <h2 class="mb-12 text-2xl text-center">Related Items:</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for item in related_items %}
+      <div class="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden transition flex flex-col">
+        <!-- Image -->
+        {% if item.image %}
+          <img src="{{ item.image.url }}" alt="{{ item.name }}" class="h-48 w-full object-contain bg-gray-50">
+        {% else %}
+          <div class="h-48 w-full bg-gray-200 flex items-center justify-center text-gray-500">
+            No Image
+          </div>
+        {% endif %}
+
+        <!-- Item details -->
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800">{{ item.name }}</h3>
+            <p class="text-sm text-gray-500 mt-2 mb-3">{{ item.description|truncatechars:80 }}</p>
+          </div>
+
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-teal-600 font-bold text-lg">NPR {{ item.price }}</span>
+            {% if item.is_sold %}
+              <span class="text-sm font-medium text-red-500">Sold</span>
+            {% else %}
+              <a href="{% url 'item:detail' item.id %}" class="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition">
+                View
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="col-span-full text-center text-gray-500">No items found.</p>
+    {% endfor %}
+  </div>
+
+</div>
 {% endblock content %}

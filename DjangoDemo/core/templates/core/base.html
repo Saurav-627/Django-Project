@@ -14,32 +14,50 @@
       <ul class="flex gap-4">
         <li>
           <a
-            href="{% url 'index' %}"
-            class="text-lg font-semibold hover:text-gray-500"
+            href="{% url 'core:index' %}"
+            class="text-lg font-semibold hover:text-gray-500 border border-gray-500 px-6 py-3 rounded-xl"
             >New Item</a
           >
         </li>
-        <li>
+        <!-- <li>
           <a
-            href="{% url 'contact' %}"
+            href="{% url 'core:contact' %}"
             class="text-lg font-semibold hover:text-gray-500"
             >Browse</a
           >
-        </li>
+        </li> -->
+
+        {% if user.is_authenticated %}
         <li>
           <a
             href="#"
             class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700"
-            >Sign Up</a
+            >Inbox</a
           >
         </li>
         <li>
           <a
             href="#"
             class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700"
+            >Dashboard</a
+          >
+        </li>
+        {% else %}
+        <li>
+          <a
+            href="{% url 'core:signup' %}"
+            class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700"
+            >Sign Up</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'core:login' %}"
+            class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700"
             >Log In</a
           >
         </li>
+        {% endif %}
       </ul>
     </nav>
     <div class="px-6 py-6">{% block content %} {% endblock content %}</div>
@@ -62,14 +80,14 @@
         <ul class="space-y-2">
           <li>
             <a
-              href="{% url 'index' %}"
+              href="{% url 'core:index' %}"
               class="text-gray-400 hover:text-white transition"
               >Home</a
             >
           </li>
           <li>
             <a
-              href="{% url 'contact' %}"
+              href="{% url 'core:contact' %}"
               class="text-gray-400 hover:text-white transition"
               >Contact</a
             >
