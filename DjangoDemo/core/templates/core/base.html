@@ -14,18 +14,18 @@
       <ul class="flex gap-4">
         <li>
           <a
-            href="{% url 'core:index' %}"
+            href="{% url 'item:new' %}"
             class="text-lg font-semibold hover:text-gray-500 border border-gray-500 px-6 py-3 rounded-xl"
             >New Item</a
           >
         </li>
-        <!-- <li>
+        <li>
           <a
-            href="{% url 'core:contact' %}"
-            class="text-lg font-semibold hover:text-gray-500"
+            href="#"
+            class="text-lg font-semibold hover:text-gray-500 mx-2 rounded-xl border border-gray-300 px-6 py-3"
             >Browse</a
           >
-        </li> -->
+        </li>
 
         {% if user.is_authenticated %}
         <li>
@@ -37,7 +37,7 @@
         </li>
         <li>
           <a
-            href="#"
+            href="{% url 'dashboard:index' %}"
             class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700"
             >Dashboard</a
           >

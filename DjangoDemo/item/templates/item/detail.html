@@ -27,20 +27,41 @@
 
       <div class="flex items-center justify-between">
         <span class="text-xl font-semibold text-teal-600">NPR {{ item.price }}</span>
-        {% if item.is_sold %}
+        <!-- {% if item.is_sold %}
           <span class="px-3 py-1 text-sm text-red-600 bg-red-100 rounded">Sold</span>
         {% else %}
           <a href="#"
              class="px-4 py-2 bg-teal-500 text-white text-md font-medium rounded hover:bg-teal-600 transition">
             Buy Now
           </a>
-        {% endif %}
+        {% endif %} -->
       </div>
 
       <div class="text-sm text-gray-500">
         <p class="mb-2">Posted by <span class="font-medium">{{ item.created_by.username }}</span></p>
         <p class="mb-2">Created: {{ item.created_at|date:"M d, Y" }}</p>
         <p class="mb-2">Category: {{ item.category.name }}</p>
+      </div>
+
+      <div class="">
+        {% if request.user == item.created_by %}
+          <div class="bg-gray-200 mt-6 p-6 rounded-xl">
+            <p class="text-md mb-6 text-gray-800">this is your item</p>
+            <a href="{% url 'item:edit' item.id %}"
+                class="px-4 py-2 mr-4 bg-green-500 text-white text-md font-medium rounded hover:bg-green-700 transition">
+                Edit
+            </a>
+            <a href="{% url 'item:delete' item.id %}"
+                class="px-4 py-2 bg-red-500 text-white text-md font-medium rounded hover:bg-red-600 transition">
+                Delete
+            </a>
+          </div>
+        {% else %}
+            <a href="{% url 'item:contact' item.id %}"
+                class="px-4 py-2 bg-teal-500 text-white text-md font-medium rounded hover:bg-teal-600 transition">
+                Contact Seller
+            </a>
+        {% endif %}
       </div>
     </div>
   </div>
